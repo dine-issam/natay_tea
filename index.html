@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ناتاي تي – أفضل بيت شاي في جدة | Natay Tea Jeddah</title>
+<meta name="description" content="ناتاي تي — بيت الأتاي الموريتاني الأصيل في الحمراء، جدة." />
+
+<!-- Fonts: Arabic + Latin -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ══════════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════════ */
+:root {
+  --ink:     #1a1410;
+  --cream:   #f5f0e8;
+  --warm:    #e8dcc8;
+  --gold:    #c9a84c;
+  --gold-lt: #e2c97e;
+  --rust:    #8b4a2b;
+  --fog:     #f9f6f0;
+  --muted:   #7a6e62;
+
+  /* Font stacks — swapped by JS */
+  --serif-ar: 'Noto Naskh Arabic', serif;
+  --sans-ar:  'Tajawal', sans-serif;
+  --serif-en: 'Cormorant Garamond', Georgia, serif;
+  --sans-en:  'DM Sans', sans-serif;
+
+  --serif: var(--serif-ar);
+  --sans:  var(--sans-ar);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.85;
+  overflow-x: hidden;
+  transition: font-family .3s;
+}
+img { display: block; max-width: 100%; }
+a  { color: inherit; text-decoration: none; }
+
+/* Direction helpers */
+body[dir="rtl"] { text-align: right; }
+body[dir="ltr"] { text-align: left; }
+body[dir="ltr"] { --serif: var(--serif-en); --sans: var(--sans-en); font-size: 15px; line-height: 1.75; }
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: .5;
+}
+
+/* ══════════════════════════════════════════
+   LANGUAGE SWITCHER
+══════════════════════════════════════════ */
+.lang-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem 1rem;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(201,168,76,.2);
+}
+.lang-btn {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .3rem .85rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: rgba(245,240,232,.45);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all .25s;
+  background: transparent;
+  font-family: var(--sans-en);
+}
+.lang-btn .flag { font-size: .95rem; }
+.lang-btn:hover { color: var(--gold); border-color: rgba(201,168,76,.3); }
+.lang-btn.active { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.08); }
+.lang-divider { width: 1px; height: 14px; background: rgba(245,240,232,.15); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 36px; left: 0; right: 0;
+  z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 4rem;
+  background: rgba(245,240,232,.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,.2);
+  transition: padding .3s, top .3s;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--rust);
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2.2rem; }
+.nav-links a {
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: .04em;
+  transition: color .25s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  padding: .5rem 1.4rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .8rem;
+  font-weight: 500;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: background .25s, color .25s;
+}
+.nav-cta:hover { background: var(--gold); color: #fff; }
+
+/* RTL nav tweaks */
+body[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: var(--ink);
+  padding-top: 36px;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,.18) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+.hero-bar {
+  position: absolute; top: 0; height: 100%; width: 42%;
+  background: linear-gradient(135deg, rgba(201,168,76,.07) 0%, rgba(201,168,76,.02) 100%);
+  transition: left .4s, right .4s;
+}
+body[dir="rtl"] .hero-bar { right: -10%; left: auto; transform: skewX(8deg); border-right: 1px solid rgba(201,168,76,.15); }
+body[dir="ltr"] .hero-bar { left: -10%; right: auto; transform: skewX(-8deg); border-left: 1px solid rgba(201,168,76,.15); }
+
+.steam-container {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 2rem;
+  opacity: .12; pointer-events: none;
+}
+.steam {
+  width: 2px; border-radius: 999px;
+  background: linear-gradient(to top, transparent, var(--gold-lt), transparent);
+  animation: rise 3s ease-in-out infinite;
+}
+.steam:nth-child(1) { height: 200px; }
+.steam:nth-child(2) { height: 260px; animation-delay: .8s; }
+.steam:nth-child(3) { height: 180px; animation-delay: 1.6s; }
+@keyframes rise {
+  0%   { transform: translateY(0) scaleX(1); opacity: .6; }
+  50%  { transform: translateY(-80px) scaleX(1.4); opacity: .3; }
+  100% { transform: translateY(-160px) scaleX(.6); opacity: 0; }
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 0 2rem;
+  max-width: 880px;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-size: .78rem; font-weight: 500; letter-spacing: .1em;
+  color: var(--gold); margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp .8s .2s forwards;
+}
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7.5vw, 6.8rem);
+  font-weight: 400; line-height: 1.15;
+  color: var(--cream); margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp .9s .4s forwards;
+}
+body[dir="ltr"] .hero-headline { font-weight: 300; }
+.hero-headline em { font-style: italic; color: var(--gold-lt); }
+body[dir="rtl"] .hero-headline em { font-style: normal; font-weight: 600; }
+.hero-sub {
+  font-size: 1.05rem; font-weight: 300;
+  color: rgba(245,240,232,.65);
+  max-width: 580px; margin: 0 auto 3rem; line-height: 2;
+  opacity: 0; animation: fadeUp .9s .6s forwards;
+}
+.hero-actions {
+  display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s .8s forwards;
+}
+.btn-primary {
+  padding: .85rem 2.4rem;
+  background: var(--gold); color: var(--ink);
+  font-size: .88rem; font-weight: 700; border-radius: 2px;
+  transition: background .25s, transform .2s;
+  font-family: var(--sans);
+}
+.btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.btn-ghost {
+  padding: .85rem 2.4rem;
+  border: 1px solid rgba(245,240,232,.3);
+  color: rgba(245,240,232,.8);
+  font-size: .88rem; font-weight: 500; border-radius: 2px;
+  transition: border-color .25s, color .25s, transform .2s;
+  direction: ltr; unicode-bidi: embed;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  opacity: 0; animation: fadeIn 1s 1.4s forwards;
+}
+.hero-scroll span { font-size: .7rem; letter-spacing: .12em; color: rgba(245,240,232,.3); }
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ══════════════════════════════════════════
+   SECTION COMMONS
+══════════════════════════════════════════ */
+section { position: relative; }
+.section-inner { max-width: 1160px; margin: 0 auto; padding: 0 3rem; }
+.section-label {
+  display: block; font-size: .72rem; font-weight: 500;
+  letter-spacing: .1em; color: var(--gold); margin-bottom: 1.2rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 600; line-height: 1.2;
+}
+body[dir="ltr"] .section-title { font-weight: 300; }
+.divider { width: 48px; height: 1px; background: var(--gold); margin: 2rem 0; }
+
+/* ── STATS ── */
+#stats {
+  background: var(--ink); padding: 3rem 0;
+  border-top: 1px solid rgba(201,168,76,.2);
+  border-bottom: 1px solid rgba(201,168,76,.2);
+}
+.stats-grid { display: flex; justify-content: center; flex-wrap: wrap; }
+.stat-item {
+  flex: 1 1 220px; text-align: center; padding: 1.5rem 2rem;
+  border-inline-end: 1px solid rgba(201,168,76,.15);
+}
+.stat-item:last-child { border-inline-end: none; }
+.stat-num {
+  font-family: var(--serif); font-size: 3rem;
+  font-weight: 600; color: var(--gold-lt); line-height: 1; direction: ltr;
+}
+.stat-label { font-size: .78rem; color: rgba(245,240,232,.45); margin-top: .5rem; }
+
+/* ── ABOUT ── */
+#about { padding: 9rem 0; background: var(--fog); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+}
+body[dir="rtl"] .about-visual { order: 2; }
+body[dir="rtl"] .about-text   { order: 1; }
+body[dir="ltr"] .about-visual { order: 1; }
+body[dir="ltr"] .about-text   { order: 2; }
+.about-visual { position: relative; }
+.about-img-frame {
+  width: 100%; aspect-ratio: 4/5;
+  background: var(--warm); border-radius: 3px;
+  overflow: hidden; position: relative;
+}
+.about-img-frame::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, #c9a84c22 0%, #8b4a2b11 100%);
+}
+.about-img-inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.about-accent-box {
+  position: absolute;
+  bottom: -2rem;
+  width: 155px; height: 155px;
+  border: 1px solid var(--gold); border-radius: 3px;
+  background: var(--cream);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
+  box-shadow: 0 8px 32px rgba(26,20,16,.08);
+}
+body[dir="rtl"] .about-accent-box { left: -2rem; }
+body[dir="ltr"] .about-accent-box { right: -2rem; }
+.about-accent-box strong { font-family: var(--serif); font-size: 2.4rem; font-weight: 700; color: var(--rust); line-height: 1; }
+.about-accent-box span { font-size: .7rem; color: var(--muted); text-align: center; }
+.about-text p { color: var(--muted); font-size: .97rem; line-height: 2; margin-bottom: 1.4rem; }
+.about-text p strong { color: var(--rust); font-weight: 700; }
+
+/* ── WHY ── */
+#why { padding: 9rem 0; background: var(--cream); }
+.why-header { text-align: center; max-width: 640px; margin: 0 auto 5rem; }
+.why-header .divider { margin: 2rem auto; }
+.why-header p { color: var(--muted); font-size: .97rem; }
+.pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: rgba(201,168,76,.12);
+  border: 1px solid rgba(201,168,76,.15); border-radius: 4px; overflow: hidden;
+}
+.pillar {
+  background: var(--fog); padding: 3rem 2.5rem;
+  transition: background .3s; position: relative; overflow: hidden;
+}
+.pillar::after {
+  content: ''; position: absolute; bottom: 0; inset-inline-start: 0; inset-inline-end: 0;
+  height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: inline-start;
+  transition: transform .4s;
+}
+.pillar:hover { background: var(--cream); }
+.pillar:hover::after { transform: scaleX(1); }
+.pillar-icon { font-size: 2rem; margin-bottom: 1.4rem; display: block; }
+.pillar-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: .8rem; }
+body[dir="ltr"] .pillar-title { font-weight: 400; font-size: 1.4rem; }
+.pillar-desc { font-size: .9rem; color: var(--muted); line-height: 1.9; }
+
+/* ── SIGNATURE ── */
+#signature {
+  padding: 7rem 0; background: var(--ink); text-align: center;
+  overflow: hidden; position: relative;
+}
+#signature::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(139,74,43,.25) 0%, transparent 70%);
+}
+.sig-inner { position: relative; z-index: 2; }
+.sig-label { font-size: .78rem; letter-spacing: .1em; color: var(--gold); display: block; margin-bottom: 1.5rem; font-weight: 500; }
+.sig-title { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 600; color: var(--cream); line-height: 1.2; margin-bottom: 1.5rem; }
+body[dir="ltr"] .sig-title { font-weight: 300; }
+.sig-title em { color: var(--gold-lt); }
+body[dir="rtl"] .sig-title em { font-style: normal; }
+.sig-desc { max-width: 580px; margin: 0 auto 2.5rem; color: rgba(245,240,232,.55); font-size: 1rem; line-height: 2; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { padding: 9rem 0; background: var(--fog); }
+.test-header { margin-bottom: 5rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.review-card {
+  background: var(--cream); border: 1px solid rgba(201,168,76,.18);
+  border-radius: 4px; padding: 2.5rem;
+  transition: transform .3s, box-shadow .3s;
+}
+.review-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,20,16,.08); }
+.review-card.featured { background: var(--ink); border-color: rgba(201,168,76,.3); }
+.quote-mark {
+  font-family: Georgia, serif; font-size: 5rem; line-height: .6;
+  color: var(--gold); opacity: .3; margin-bottom: 1rem; display: block;
+}
+.review-text {
+  font-family: var(--serif); font-size: 1.07rem; font-weight: 400;
+  line-height: 1.9; color: var(--ink); margin-bottom: 1.8rem;
+}
+body[dir="ltr"] .review-text { font-style: italic; font-weight: 300; }
+.review-card.featured .review-text { color: var(--cream); }
+.reviewer { display: flex; align-items: center; gap: 1rem; }
+body[dir="rtl"] .reviewer { flex-direction: row-reverse; justify-content: flex-end; }
+body[dir="ltr"] .reviewer { flex-direction: row; }
+.reviewer-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--warm);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1rem; color: var(--rust);
+  flex-shrink: 0; border: 1px solid rgba(201,168,76,.3);
+}
+.review-card.featured .reviewer-avatar { background: rgba(201,168,76,.15); color: var(--gold-lt); }
+.reviewer-info { text-align: inherit; }
+body[dir="rtl"] .reviewer-info { text-align: right; }
+body[dir="ltr"] .reviewer-info { text-align: left; }
+.reviewer-name { font-weight: 700; font-size: .88rem; color: var(--ink); margin-bottom: .15rem; }
+.review-card.featured .reviewer-name { color: var(--cream); }
+.stars { color: var(--gold); font-size: .8rem; direction: ltr; display: inline-block; }
+
+/* ── GALLERY ── */
+#gallery { padding: 9rem 0; background: var(--cream); }
+.gallery-header { margin-bottom: 3.5rem; }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 260px 260px; gap: 1rem; border-radius: 4px; overflow: hidden;
+}
+.g-item { background: var(--warm); border-radius: 3px; overflow: hidden; position: relative; transition: transform .4s; }
+.g-item:hover { transform: scale(.98); }
+.g-item:nth-child(1) { grid-column: 1 / 5; grid-row: 1; }
+.g-item:nth-child(2) { grid-column: 5 / 9; grid-row: 1; }
+.g-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 3; }
+.g-item:nth-child(4) { grid-column: 1 / 7; grid-row: 2; }
+.g-item:nth-child(5) { grid-column: 7 / 9; grid-row: 2; }
+.g-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+  background: linear-gradient(135deg, rgba(201,168,76,.08), rgba(139,74,43,.06));
+}
+.g-icon { font-size: 2.2rem; margin-bottom: .8rem; opacity: .5; }
+.g-caption { font-size: .78rem; color: var(--muted); text-align: center; line-height: 1.6; }
+.gallery-note {
+  margin-top: 2rem; padding: 1.5rem 2rem;
+  background: var(--fog); border-radius: 3px;
+}
+body[dir="rtl"] .gallery-note { border-right: 3px solid var(--gold); border-radius: 3px 0 0 3px; }
+body[dir="ltr"] .gallery-note { border-left: 3px solid var(--gold); border-radius: 0 3px 3px 0; }
+.gallery-note p { font-size: .9rem; color: var(--muted); line-height: 1.9; }
+.gallery-note strong { color: var(--rust); }
+
+/* ── LOCATION ── */
+#location { padding: 9rem 0; background: var(--ink); overflow: hidden; }
+.location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.location-text .section-title { color: var(--cream); }
+.location-text p { color: rgba(245,240,232,.55); font-size: .97rem; line-height: 2; margin-bottom: 2.5rem; }
+.contact-items { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2.5rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+body[dir="rtl"] .contact-item { flex-direction: row-reverse; justify-content: flex-end; }
+body[dir="ltr"] .contact-item { flex-direction: row; }
+.contact-icon {
+  width: 36px; height: 36px; border: 1px solid rgba(201,168,76,.3); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0; color: var(--gold); margin-top: .1rem;
+}
+.contact-label { font-size: .68rem; color: var(--gold); margin-bottom: .2rem; font-weight: 500; }
+.contact-value { font-size: .97rem; color: rgba(245,240,232,.8); line-height: 1.6; }
+.location-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold {
+  padding: .85rem 2rem; background: var(--gold); color: var(--ink);
+  font-size: .88rem; font-weight: 700; border-radius: 2px;
+  transition: background .25s, transform .2s; display: inline-block;
+  font-family: var(--sans);
+}
+.btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.btn-outline-gold {
+  padding: .85rem 2rem; border: 1px solid rgba(201,168,76,.4);
+  color: rgba(245,240,232,.7); font-size: .88rem; font-weight: 500; border-radius: 2px;
+  transition: border-color .25s, color .25s, transform .2s; display: inline-block;
+}
+.btn-outline-gold:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.map-frame {
+  width: 100%; aspect-ratio: 4/3; background: #2a2218;
+  border-radius: 4px; border: 1px solid rgba(201,168,76,.18);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.map-frame::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(201,168,76,.04) 0, rgba(201,168,76,.04) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(201,168,76,.04) 0, rgba(201,168,76,.04) 1px, transparent 1px, transparent 40px);
+}
+.map-pin {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: .6rem; text-align: center;
+}
+.map-pin-icon {
+  width: 56px; height: 56px; background: var(--gold);
+  border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(201,168,76,.4);
+}
+.map-pin-icon span { transform: rotate(45deg); font-size: 1.4rem; }
+.map-label { font-family: var(--serif); font-size: 1.2rem; color: var(--cream); font-weight: 600; }
+.map-sublabel { font-size: .72rem; color: rgba(245,240,232,.35); }
+.map-open-link {
+  margin-top: 1rem; display: inline-block; padding: .55rem 1.4rem;
+  border: 1px solid rgba(201,168,76,.3); border-radius: 2px;
+  font-size: .76rem; color: var(--gold); transition: background .2s;
+}
+.map-open-link:hover { background: rgba(201,168,76,.1); }
+.hours-grid { margin-top: 2rem; display: flex; flex-direction: column; gap: .5rem; }
+.hour-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .5rem 0; border-bottom: 1px solid rgba(201,168,76,.1); font-size: .9rem;
+}
+.hour-row:last-child { border-bottom: none; }
+.hour-day { color: rgba(245,240,232,.45); }
+.hour-time { color: rgba(245,240,232,.75); direction: ltr; }
+.hour-row.today .hour-day,
+.hour-row.today .hour-time { color: var(--gold-lt); font-weight: 700; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 3.5rem 0; border-top: 1px solid rgba(201,168,76,.15); }
+.footer-inner {
+  max-width: 1160px; margin: 0 auto; padding: 0 3rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+}
+body[dir="rtl"] .footer-inner { flex-direction: row-reverse; }
+.footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--gold-lt); }
+.footer-copy { font-size: .78rem; color: rgba(245,240,232,.25); }
+.footer-tagline { font-family: var(--serif); font-size: .98rem; color: rgba(245,240,232,.3); font-style: italic; }
+body[dir="rtl"] .footer-tagline { font-style: normal; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; top: 34px; }
+  .nav-links { display: none; }
+  .section-inner { padding: 0 1.5rem; }
+  .about-grid, .location-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-accent-box { display: none; }
+  .about-visual { order: 1 !important; }
+  .about-text   { order: 2 !important; }
+  .pillars { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .g-item { grid-column: auto !important; grid-row: auto !important; height: 200px; }
+  .stats-grid .stat-item { border-inline-end: none; border-bottom: 1px solid rgba(201,168,76,.15); }
+  .lang-btn .label { display: none; }
+}
+
+/* ── LANG TRANSITION ── */
+.lang-transition * { transition: color .25s, background .25s !important; }
+</style>
+</head>
+<body dir="rtl">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ar')" id="btn-ar">
+    <span class="flag">🇸🇦</span>
+    <span class="label">العربية</span>
+  </button>
+  <div class="lang-divider"></div>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">
+    <span class="flag">🇬🇧</span>
+    <span class="label">English</span>
+  </button>
+  <div class="lang-divider"></div>
+  <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">
+    <span class="flag">🇫🇷</span>
+    <span class="label">Français</span>
+  </button>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo" data-key="nav-logo">ناتاي <span>تي</span></div>
+  <div class="nav-links">
+    <a href="#about"        data-key="nav-story">قصتنا</a>
+    <a href="#why"          data-key="nav-exp">تجربتنا</a>
+    <a href="#testimonials" data-key="nav-rev">آراء الزوار</a>
+    <a href="#location"     data-key="nav-visit">زورونا</a>
+  </div>
+  <a href="tel:+966564506780" class="nav-cta" data-key="nav-cta">اتصل بنا</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bar"></div>
+  <div class="steam-container">
+    <div class="steam"></div><div class="steam"></div><div class="steam"></div>
+  </div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow" data-key="hero-eyebrow">الحمراء · جدة · حيث يُصنع الأتاي بأصالة</span>
+    <h1 class="hero-headline" data-key="hero-headline">حيث كلُّ رشفةٍ<br>تحكي <em>حكاية.</em></h1>
+    <p class="hero-sub" data-key="hero-sub">من طقوس الأتاي الموريتاني العريقة إلى خلطات الشاي المُختارة بعناية لتُرضي الروح — ناتاي تي هو ملاذك في جدة لمن يؤمن بأن الشاي الجيد تجربةٌ لا مجرّد مشروب.</p>
+    <div class="hero-actions">
+      <a href="#location" class="btn-primary" data-key="hero-cta1">اكتشفنا في الحمراء</a>
+      <a href="tel:+966564506780" class="btn-ghost">+966 56 450 6780</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span data-key="hero-scroll">اكتشف</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num">4.5★</div>
+      <div class="stat-label" data-key="stat1">تقييم جوجل</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">+1000</div>
+      <div class="stat-label" data-key="stat2">زائر سعيد</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num">∞</div>
+      <div class="stat-label" data-key="stat3">نكهة تنتظرك</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num" data-key="stat4-num">ليلي</div>
+      <div class="stat-label" data-key="stat4">خدمة حتى آخر الليل</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label" data-key="about-label">قصتنا</span>
+        <h2 class="section-title" data-key="about-title">وُلدنا من عشقٍ<br><span style="color:var(--rust);">حقيقي للشاي.</span></h2>
+        <div class="divider"></div>
+        <p data-key="about-p1">ناتاي تي بُني على قناعة راسخة وبسيطة: أن الكوب الصحيح من الشاي يحوّل أمسيةً عادية إلى لحظةٍ استثنائية. في قلب حي <strong>الحمراء بجدة</strong>، فتحنا أبوابنا ملاذًا — مكانًا تلتقي فيه أصالة فن الشاي بأجواء دافئة عصرية.</p>
+        <p data-key="about-p2">عرضنا الأبرز هو <strong>الأتاي الموريتاني</strong> — الشاي الاحتفالي المُعدّ على الطريقة الأصيلة الجنوب مغربية، غني بالطقوس ومتعدد الطبقات في نكهته. وإلى جانبه قائمتنا المُختارة بعناية من الكلاسيكيات إلى المزيج الإبداعي.</p>
+        <p data-key="about-p3">المكان بحدّ ذاته مقصودٌ كالشاي: حيويٌّ دون ضجيج، مريحٌ دون رتابة. فريقنا ليس موظفين — بل هم عشّاق شاي يفخرون بأن كل زيارة تبدو شخصية.</p>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-img-frame">
+          <div class="about-img-inner">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:120px;height:120px;opacity:.15;">
+              <rect x="30" y="40" width="60" height="65" rx="8" stroke="#c9a84c" stroke-width="3" fill="none"/>
+              <path d="M90 55 Q110 55 110 70 Q110 85 90 85" stroke="#c9a84c" stroke-width="3" fill="none"/>
+              <path d="M30 50 Q60 48 90 50" stroke="#c9a84c" stroke-width="2" opacity=".5"/>
+              <ellipse cx="60" cy="30" rx="18" ry="8" stroke="#c9a84c" stroke-width="2" fill="none" opacity=".4"/>
+              <line x1="60" y1="22" x2="60" y2="10" stroke="#c9a84c" stroke-width="2" opacity=".3"/>
+            </svg>
+          </div>
+          <div style="position:absolute;bottom:2rem;inset-inline-start:2rem;">
+            <div style="font-family:var(--serif);font-size:3.5rem;font-weight:700;color:rgba(201,168,76,.12);line-height:1;" data-key="about-watermark">أتاي</div>
+          </div>
+        </div>
+        <div class="about-accent-box">
+          <strong>#1</strong>
+          <span data-key="about-badge">وجهة الشاي<br>في جدة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-header reveal">
+      <span class="section-label" data-key="why-label">ما يميّزنا</span>
+      <h2 class="section-title" data-key="why-title">ستة أسباب تجعلك<br>تعود مرارًا وتكرارًا</h2>
+      <div class="divider"></div>
+      <p data-key="why-sub">كل تفصيلة — من أول صبّة حتى آخر رشفة — مُصمَّمة لتمنحك تجربةً تسكن في ذاكرتك.</p>
+    </div>
+    <div class="pillars reveal reveal-delay-1">
+      <div class="pillar">
+        <span class="pillar-icon">🍵</span>
+        <div class="pillar-title" data-key="p1-title">أصالة الأتاي الموريتاني</div>
+        <p class="pillar-desc" data-key="p1-desc">أتاينا يُحضَّر بالطريقة القديمة — الأسلوب الجنوب مغربي الأصيل. طقسٌ حيٌّ يصلك بقرون من ثقافة الشاي، يُقدَّم طازجًا في كل كأس.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🏮</span>
+        <div class="pillar-title" data-key="p2-title">أجواء تحتضنك</div>
+        <p class="pillar-desc" data-key="p2-desc">حيوي ودافئ ومُصمَّم بعناية — ناتاي يوازن بين البهجة والهدوء. المكان الذي تعود إليه ليس فقط للشاي، بل للشعور.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💰</span>
+        <div class="pillar-title" data-key="p3-title">جودة عالية بأسعار منصفة</div>
+        <p class="pillar-desc" data-key="p3-desc">الشاي الجيد لا يجب أن يكلّف كثيرًا. قائمتنا مُسعَّرة لتستقبل الجميع — من الضيف المنتظم إلى الزائر لأول مرة.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🌙</span>
+        <div class="pillar-title" data-key="p4-title">مفتوح ليلًا دائمًا</div>
+        <p class="pillar-desc" data-key="p4-desc">أجمل الأحاديث تحدث بعد منتصف الليل. ناتاي يبقى مفتوحًا متأخرًا لأننا نعرف إيقاع المدينة — وسنكون هنا بكوبٍ طازج متى احتجته.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🤝</span>
+        <div class="pillar-title" data-key="p5-title">فريق يهتم حقًّا</div>
+        <p class="pillar-desc" data-key="p5-desc">ودودون، متمرسون، وسهل التعامل معهم — فريقنا هو روح ناتاي. هم هنا ليس فقط للخدمة، بل لضمان أن وقتك معنا ممتعٌ على الصعيد الشخصي.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🥡</span>
+        <div class="pillar-title" data-key="p6-title">جلوسٌ أو طلبٌ للخارج</div>
+        <p class="pillar-desc" data-key="p6-desc">ابقَ واستمتع بالأجواء، أو احمل كوبك معك. ناتاي يتناسب مع أسلوب حياتك — خدمة داخلية مريحة أو طلب سريع عالي الجودة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<section id="signature">
+  <div class="section-inner">
+    <div class="sig-inner reveal">
+      <span class="sig-label" data-key="sig-label">نجم قائمتنا</span>
+      <h2 class="sig-title" data-key="sig-title">الأتاي الأصيل.<br><em>بنكهة ناتاي الفريدة.</em></h2>
+      <p class="sig-desc" data-key="sig-desc">يُصبُّ ثلاث مرات حتى يكتمل. يُحلَّى بالقدر الصحيح. الأتاي الموريتاني في ناتاي ليس مجرد مشروب — بل هو طقس. رشفة واحدة وستفهم لماذا يقطع زوارٌ المسافة من أرجاء جدة إلى الحمراء، خصيصًا لهذا الكأس.</p>
+      <a href="tel:+966564506780" class="btn-primary" data-key="sig-cta">احجز طاولتك الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="test-header reveal">
+      <span class="section-label" data-key="test-label">أصوات زوارنا</span>
+      <h2 class="section-title" data-key="test-title">ماذا تقول جدة عنّا</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured reveal reveal-delay-1">
+        <span class="quote-mark">"</span>
+        <p class="review-text" data-key="r1-text">الأجواء داخل المكان كانت حيوية ودافئة وهادئة في آنٍ واحد. الشاي كان لذيذًا بشكل لافت. الموظفون محبوبون وسهلون. هذا من تلك الأماكن النادرة التي لا تخذلك أبدًا.</p>
+        <div class="reviewer">
+          <div class="reviewer-info"><div class="reviewer-name" data-key="r1-name">سلمى أ.</div><div class="stars">★★★★★</div></div>
+          <div class="reviewer-avatar" data-key="r1-av">س</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <span class="quote-mark">"</span>
+        <p class="review-text" data-key="r2-text">من الأجواء حتى التصميم، كل تفصيلة كانت في محلّها. الموظفون رحّبوا بنا فور دخولنا، والشاي؟ الأفضل في جدة بدون منازع. زيارة إلزامية لكل محبي الشاي.</p>
+        <div class="reviewer">
+          <div class="reviewer-info"><div class="reviewer-name" data-key="r2-name">نور هـ.</div><div class="stars">★★★★★</div></div>
+          <div class="reviewer-avatar" data-key="r2-av">ن</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-3">
+        <span class="quote-mark">"</span>
+        <p class="review-text" data-key="r3-text">جرّبت كثيرًا من المقاهي في المدينة، لكن ناتاي مختلف. الأتاي الموريتاني يُحضَّر بالطريقة الأصيلة تمامًا. إن كنت من عشّاق الأتاي الحقيقي، هذا مكانك.</p>
+        <div class="reviewer">
+          <div class="reviewer-info"><div class="reviewer-name" data-key="r3-name">خالد م.</div><div class="stars">★★★★★</div></div>
+          <div class="reviewer-avatar" data-key="r3-av">خ</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <span class="quote-mark">"</span>
+        <p class="review-text" data-key="r4-text">ملاذٌ هادئ ومريح في قلب الحمراء. شاي رائع، أسعار معقولة، وبيئة هادئة حقًّا. هو مقصدي الدائم حين أحتاج إلى الاسترخاء.</p>
+        <div class="reviewer">
+          <div class="reviewer-info"><div class="reviewer-name" data-key="r4-name">فاطمة ر.</div><div class="stars">★★★★☆</div></div>
+          <div class="reviewer-avatar" data-key="r4-av">ف</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <span class="quote-mark">"</span>
+        <p class="review-text" data-key="r5-text">الديكور جميل جدًّا والأسعار في المتناول. جئت مرة واحدة وعدت بكامل عائلتي في نهاية الأسبوع. من أفضل ما في جدة دون شك.</p>
+        <div class="reviewer">
+          <div class="reviewer-info"><div class="reviewer-name" data-key="r5-name">عمر ت.</div><div class="stars">★★★★★</div></div>
+          <div class="reviewer-avatar" data-key="r5-av">ع</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-3">
+        <span class="quote-mark">"</span>
+        <p class="review-text" data-key="r6-text">أجواء رائعة، شاي استثنائي، وإحساس حقيقي بالدفء نادرًا ما تجده. ناتاي يمنحك تجربة تبقى معك — ببساطة تامة.</p>
+        <div class="reviewer">
+          <div class="reviewer-info"><div class="reviewer-name" data-key="r6-name">ليلى ز.</div><div class="stars">★★★★★</div></div>
+          <div class="reviewer-avatar" data-key="r6-av">ل</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="gallery-header reveal">
+      <span class="section-label" data-key="gal-label">من داخل ناتاي</span>
+      <h2 class="section-title" data-key="gal-title">مكانٌ ستشتاق<br>للعودة إليه</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item"><div class="g-inner"><div class="g-icon">🍵</div><div class="g-caption" data-key="g1">كأس الأتاي<br>يُصبُّ طازجًا</div></div></div>
+      <div class="g-item"><div class="g-inner"><div class="g-icon">🏮</div><div class="g-caption" data-key="g2">أجواء<br>المكان</div></div></div>
+      <div class="g-item"><div class="g-inner"><div class="g-icon">✨</div><div class="g-caption" data-key="g3">السحر في<br>المساء<br>والديكور</div></div></div>
+      <div class="g-item"><div class="g-inner"><div class="g-icon">🪑</div><div class="g-caption" data-key="g4">مقاعد مريحة<br>وزوايا دافئة</div></div></div>
+      <div class="g-item"><div class="g-inner"><div class="g-icon">🫖</div><div class="g-caption" data-key="g5">طريقة<br>التحضير</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <div class="location-grid">
+      <div class="location-text reveal">
+        <span class="section-label" data-key="loc-label">زورونا</span>
+        <h2 class="section-title" data-key="loc-title">تعال كما أنت.<br><em style="color:var(--gold-lt);" data-key="loc-title-em">الشاي جاهز.</em></h2>
+        <div class="divider"></div>
+        <p data-key="loc-desc">ناتاي تي مُختبئٌ في قلب حي الحمراء النابض بالحياة في جدة. أبوابنا مفتوحة متأخرًا كل ليلة — لأن الشاي الجيد لا يعرف حظرًا للسير.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div><div class="contact-label" data-key="ci1-label">الموقع</div><div class="contact-value" data-key="ci1-val">حي الحمراء<br>جدة، المملكة العربية السعودية</div></div>
+            <div class="contact-icon">📍</div>
+          </div>
+          <div class="contact-item">
+            <div><div class="contact-label" data-key="ci2-label">الهاتف</div><div class="contact-value" dir="ltr">+966 56 450 6780</div></div>
+            <div class="contact-icon">📞</div>
+          </div>
+          <div class="contact-item">
+            <div><div class="contact-label" data-key="ci3-label">أوقات العمل</div><div class="contact-value" data-key="ci3-val">يومي · خدمة حتى آخر الليل</div></div>
+            <div class="contact-icon">🕙</div>
+          </div>
+          <div class="contact-item">
+            <div><div class="contact-label" data-key="ci4-label">الخدمات</div><div class="contact-value" data-key="ci4-val">جلوس داخلي · طلب للخارج · خدمة ليلية</div></div>
+            <div class="contact-icon">🛎️</div>
+          </div>
+        </div>
+        <div class="location-actions">
+          <a href="tel:+966564506780" class="btn-gold" data-key="loc-cta1">اتصل للحجز</a>
+          <a href="https://maps.google.com/?q=Natay+Tea+Al+Hamra+Jeddah" target="_blank" class="btn-outline-gold" data-key="loc-cta2">الاتجاهات على خرائط جوجل</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="map-frame">
+          <div class="map-pin">
+            <div class="map-pin-icon"><span>🍵</span></div>
+            <div class="map-label" data-key="map-label">ناتاي تي</div>
+            <div class="map-sublabel" data-key="map-sub">الحمراء · جدة</div>
+            <a href="https://maps.google.com/?q=Natay+Tea+Al+Hamra+Jeddah" target="_blank" class="map-open-link" data-key="map-link">← احصل على الاتجاهات</a>
+          </div>
+        </div>
+        <div class="hours-grid">
+          <div class="hour-row today">
+            <span class="hour-time" data-key="h1-time">مفتوح · حتى آخر الليل</span>
+            <span class="hour-day" data-key="h1-day">اليوم (الثلاثاء)</span>
+          </div>
+          <div class="hour-row">
+            <span class="hour-time" data-key="h2-time">يومي · ساعات مسائية</span>
+            <span class="hour-day" data-key="h2-day">جميع الأيام</span>
+          </div>
+          <div class="hour-row">
+            <span class="hour-time" data-key="h3-time">✓ متاح</span>
+            <span class="hour-day" data-key="h3-day">جلوس داخلي</span>
+          </div>
+          <div class="hour-row">
+            <span class="hour-time" data-key="h4-time">✓ متاح</span>
+            <span class="hour-day" data-key="h4-day">طلب للخارج</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo" data-key="footer-logo">ناتاي تي</div>
+    <div class="footer-tagline" data-key="footer-tag">كل رشفة تحكي حكاية.</div>
+    <div class="footer-copy" data-key="footer-copy">© 2025 ناتاي تي · الحمراء، جدة</div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     TRANSLATIONS DATA
+══════════════════════════════════════ -->
+<script>
+const translations = {
+
+  ar: {
+    dir: 'rtl', lang: 'ar',
+    seoTitle: 'ناتاي تي – أفضل بيت شاي في جدة | الحمراء',
+    seoDesc:  'اكتشف تجربة الأتاي الموريتاني الأصيل والشاي المحضَّر بعناية في ناتاي تي، أبرز بيوت الشاي في حي الحمراء بجدة. أجواء دافئة، خدمة حتى منتصف الليل، ونكهة لا تُنسى.',
+    'nav-logo':    'ناتاي <span style="color:var(--gold)">تي</span>',
+    'nav-story':   'قصتنا',
+    'nav-exp':     'تجربتنا',
+    'nav-rev':     'آراء الزوار',
+    'nav-visit':   'زورونا',
+    'nav-cta':     'اتصل بنا',
+    'hero-eyebrow':'الحمراء · جدة · حيث يُصنع الأتاي بأصالة',
+    'hero-headline':'حيث كلُّ رشفةٍ<br>تحكي <em>حكاية.</em>',
+    'hero-sub':    'من طقوس الأتاي الموريتاني العريقة إلى خلطات الشاي المُختارة بعناية لتُرضي الروح — ناتاي تي هو ملاذك في جدة لمن يؤمن بأن الشاي الجيد تجربةٌ لا مجرّد مشروب.',
+    'hero-cta1':   'اكتشفنا في الحمراء',
+    'hero-scroll': 'اكتشف',
+    'stat1': 'تقييم جوجل', 'stat2': 'زائر سعيد', 'stat3': 'نكهة تنتظرك',
+    'stat4-num': 'ليلي', 'stat4': 'خدمة حتى آخر الليل',
+    'about-label': 'قصتنا',
+    'about-title': 'وُلدنا من عشقٍ<br><span style="color:var(--rust)">حقيقي للشاي.</span>',
+    'about-p1': 'ناتاي تي بُني على قناعة راسخة وبسيطة: أن الكوب الصحيح من الشاي يحوّل أمسيةً عادية إلى لحظةٍ استثنائية. في قلب حي <strong>الحمراء بجدة</strong>، فتحنا أبوابنا ملاذًا — مكانًا تلتقي فيه أصالة فن الشاي بأجواء دافئة عصرية.',
+    'about-p2': 'عرضنا الأبرز هو <strong>الأتاي الموريتاني</strong> — الشاي الاحتفالي المُعدّ على الطريقة الأصيلة الجنوب مغربية، غني بالطقوس ومتعدد الطبقات في نكهته. وإلى جانبه قائمتنا المُختارة بعناية من الكلاسيكيات إلى المزيج الإبداعي.',
+    'about-p3': 'المكان بحدّ ذاته مقصودٌ كالشاي: حيويٌّ دون ضجيج، مريحٌ دون رتابة. فريقنا ليس موظفين — بل هم عشّاق شاي يفخرون بأن كل زيارة تبدو شخصية.',
+    'about-watermark': 'أتاي',
+    'about-badge': 'وجهة الشاي<br>في جدة',
+    'why-label': 'ما يميّزنا',
+    'why-title': 'ستة أسباب تجعلك<br>تعود مرارًا وتكرارًا',
+    'why-sub': 'كل تفصيلة — من أول صبّة حتى آخر رشفة — مُصمَّمة لتمنحك تجربةً تسكن في ذاكرتك.',
+    'p1-title':'أصالة الأتاي الموريتاني','p1-desc':'أتاينا يُحضَّر بالطريقة القديمة — الأسلوب الجنوب مغربي الأصيل. طقسٌ حيٌّ يصلك بقرون من ثقافة الشاي، يُقدَّم طازجًا في كل كأس.',
+    'p2-title':'أجواء تحتضنك','p2-desc':'حيوي ودافئ ومُصمَّم بعناية — ناتاي يوازن بين البهجة والهدوء. المكان الذي تعود إليه ليس فقط للشاي، بل للشعور.',
+    'p3-title':'جودة عالية بأسعار منصفة','p3-desc':'الشاي الجيد لا يجب أن يكلّف كثيرًا. قائمتنا مُسعَّرة لتستقبل الجميع — من الضيف المنتظم إلى الزائر لأول مرة.',
+    'p4-title':'مفتوح ليلًا دائمًا','p4-desc':'أجمل الأحاديث تحدث بعد منتصف الليل. ناتاي يبقى مفتوحًا متأخرًا لأننا نعرف إيقاع المدينة — وسنكون هنا بكوبٍ طازج متى احتجته.',
+    'p5-title':'فريق يهتم حقًّا','p5-desc':'ودودون، متمرسون، وسهل التعامل معهم — فريقنا هو روح ناتاي. هم هنا ليس فقط للخدمة، بل لضمان أن وقتك معنا ممتعٌ على الصعيد الشخصي.',
+    'p6-title':'جلوسٌ أو طلبٌ للخارج','p6-desc':'ابقَ واستمتع بالأجواء، أو احمل كوبك معك. ناتاي يتناسب مع أسلوب حياتك — خدمة داخلية مريحة أو طلب سريع عالي الجودة.',
+    'sig-label':'نجم قائمتنا',
+    'sig-title':'الأتاي الأصيل.<br><em>بنكهة ناتاي الفريدة.</em>',
+    'sig-desc':'يُصبُّ ثلاث مرات حتى يكتمل. يُحلَّى بالقدر الصحيح. الأتاي الموريتاني في ناتاي ليس مجرد مشروب — بل هو طقس. رشفة واحدة وستفهم لماذا يقطع زوارٌ المسافة من أرجاء جدة إلى الحمراء.',
+    'sig-cta':'احجز طاولتك الآن',
+    'test-label':'أصوات زوارنا','test-title':'ماذا تقول جدة عنّا',
+    'r1-text':'الأجواء داخل المكان كانت حيوية ودافئة وهادئة في آنٍ واحد. الشاي كان لذيذًا بشكل لافت. الموظفون محبوبون وسهلون. هذا من تلك الأماكن النادرة التي لا تخذلك أبدًا.','r1-name':'سلمى أ.','r1-av':'س',
+    'r2-text':'من الأجواء حتى التصميم، كل تفصيلة كانت في محلّها. الموظفون رحّبوا بنا فور دخولنا، والشاي؟ الأفضل في جدة بدون منازع.','r2-name':'نور هـ.','r2-av':'ن',
+    'r3-text':'جرّبت كثيرًا من المقاهي في المدينة، لكن ناتاي مختلف. الأتاي الموريتاني يُحضَّر بالطريقة الأصيلة تمامًا. إن كنت من عشّاق الأتاي الحقيقي، هذا مكانك.','r3-name':'خالد م.','r3-av':'خ',
+    'r4-text':'ملاذٌ هادئ ومريح في قلب الحمراء. شاي رائع، أسعار معقولة، وبيئة هادئة حقًّا. هو مقصدي الدائم حين أحتاج إلى الاسترخاء.','r4-name':'فاطمة ر.','r4-av':'ف',
+    'r5-text':'الديكور جميل جدًّا والأسعار في المتناول. جئت مرة واحدة وعدت بكامل عائلتي في نهاية الأسبوع. من أفضل ما في جدة دون شك.','r5-name':'عمر ت.','r5-av':'ع',
+    'r6-text':'أجواء رائعة، شاي استثنائي، وإحساس حقيقي بالدفء نادرًا ما تجده. ناتاي يمنحك تجربة تبقى معك — ببساطة تامة.','r6-name':'ليلى ز.','r6-av':'ل',
+    'gal-label':'من داخل ناتاي','gal-title':'مكانٌ ستشتاق<br>للعودة إليه',
+    'g1':'كأس الأتاي<br>يُصبُّ طازجًا','g2':'أجواء<br>المكان','g3':'السحر في<br>المساء<br>والديكور','g4':'مقاعد مريحة<br>وزوايا دافئة','g5':'طريقة<br>التحضير',
+    'loc-label':'زورونا','loc-title':'تعال كما أنت.','loc-title-em':'الشاي جاهز.',
+    'loc-desc':'ناتاي تي مُختبئٌ في قلب حي الحمراء النابض بالحياة في جدة. أبوابنا مفتوحة متأخرًا كل ليلة — لأن الشاي الجيد لا يعرف حظرًا للسير.',
+    'ci1-label':'الموقع','ci1-val':'حي الحمراء<br>جدة، المملكة العربية السعودية',
+    'ci2-label':'الهاتف','ci3-label':'أوقات العمل','ci3-val':'يومي · خدمة حتى آخر الليل',
+    'ci4-label':'الخدمات','ci4-val':'جلوس داخلي · طلب للخارج · خدمة ليلية',
+    'loc-cta1':'اتصل للحجز','loc-cta2':'الاتجاهات على خرائط جوجل',
+    'map-label':'ناتاي تي','map-sub':'الحمراء · جدة','map-link':'← احصل على الاتجاهات',
+    'h1-time':'مفتوح · حتى آخر الليل','h1-day':'اليوم (الثلاثاء)',
+    'h2-time':'يومي · ساعات مسائية','h2-day':'جميع الأيام',
+    'h3-time':'✓ متاح','h3-day':'جلوس داخلي',
+    'h4-time':'✓ متاح','h4-day':'طلب للخارج',
+    'footer-logo':'ناتاي تي','footer-tag':'كل رشفة تحكي حكاية.','footer-copy':'© 2025 ناتاي تي · الحمراء، جدة'
+  },
+
+  en: {
+    dir: 'ltr', lang: 'en',
+    seoTitle: 'Natay Tea – Jeddah\'s Finest Tea House | Al Hamra',
+    seoDesc:  'Experience authentic Mauritanian Atay and handcrafted teas at Natay Tea, Jeddah\'s beloved tea house in Al Hamra. Cozy vibes, late-night hours, unforgettable taste.',
+    'nav-logo':    'Natay <span style="color:var(--gold)">Tea</span>',
+    'nav-story':   'Story','nav-exp':'Experience','nav-rev':'Reviews','nav-visit':'Visit',
+    'nav-cta':     'Call Now',
+    'hero-eyebrow':'Al Hamra · Jeddah · Where Atay Is Brewed with Soul',
+    'hero-headline':'Where Every Sip<br>Tells a <em>Story.</em>',
+    'hero-sub':    'From the ancient Mauritanian Atay ritual to handcrafted blends curated for the soul — Natay Tea is Jeddah\'s sanctuary for those who believe great tea is an experience, not just a drink.',
+    'hero-cta1':   'Find Us in Al Hamra',
+    'hero-scroll': 'Discover',
+    'stat1':'Google Rating','stat2':'Happy Guests','stat3':'Blends to Explore',
+    'stat4-num':'Late','stat4':'Open Late Night',
+    'about-label':'Our Story',
+    'about-title':'Born from a Love of<br><span style="color:var(--rust)">Authentic Tea.</span>',
+    'about-p1':'Natay Tea was built on one simple belief: the perfect cup of tea can transform an ordinary evening into something extraordinary. Nestled in the heart of <strong>Al Hamra, Jeddah</strong>, we opened as a refuge — where the ancient art of tea-making meets a warm, modern atmosphere.',
+    'about-p2':'Our signature is the <strong>Mauritanian Atay</strong> — the ceremonial tea prepared in the authentic southern Moroccan tradition, rich in ritual and layered in flavor. Alongside it, our curated menu spans classic brews and creative blends.',
+    'about-p3':'The space is as intentional as the tea: vibrant yet peaceful, cozy yet refined. Our staff are not just servers — they are tea enthusiasts who take pride in making every visit feel personal.',
+    'about-watermark':'Atay',
+    'about-badge':'#1 Tea Spot<br>in Jeddah',
+    'why-label':'The Natay Difference',
+    'why-title':'Six Reasons Guests<br>Never Stop Returning',
+    'why-sub':'Every detail — from the first pour to the last sip — is crafted to give you an experience that lingers long after you leave.',
+    'p1-title':'Authentic Atay Heritage','p1-desc':'Our Mauritanian Atay is prepared the old way — the genuine southern Moroccan method. A living ritual connecting you to centuries of tea culture, served fresh in every glass.',
+    'p2-title':'An Atmosphere That Embraces You','p2-desc':'Vibrant, cozy, and thoughtfully designed — Natay strikes a rare balance between lively energy and peaceful calm. The kind of place you return to not just for the tea, but for the feeling.',
+    'p3-title':'Premium Quality, Honest Prices','p3-desc':'Great tea shouldn\'t cost a fortune. Our menu is priced to welcome everyone, from the regular neighborhood guest to the first-time visitor.',
+    'p4-title':'Late-Night, Always Open','p4-desc':'Some of the best conversations happen after midnight. Natay stays open late because we know the city\'s rhythm — and we\'ll be here with a fresh brew whenever you need it.',
+    'p5-title':'Staff Who Genuinely Care','p5-desc':'Friendly, knowledgeable, and always approachable — our team is the soul of Natay. They\'re here not just to serve, but to make sure your time with us is truly enjoyable.',
+    'p6-title':'Dine-In or Take Your Tea Home','p6-desc':'Stay and soak in the ambiance, or grab your cup on the go. Natay fits into your life however you need — dine-in comfort or quick, quality takeout.',
+    'sig-label':'The Star of Our Menu',
+    'sig-title':'The Original Atay.<br><em>Unmistakably Natay.</em>',
+    'sig-desc':'Poured three times to perfection. Sweetened exactly right. The Mauritanian Atay at Natay is not simply a drink — it is a ceremony. One sip and you will understand why guests make the journey to Al Hamra just for this glass.',
+    'sig-cta':'Reserve Your Table',
+    'test-label':'Guest Voices','test-title':'What Jeddah Is Saying',
+    'r1-text':'The atmosphere was vibrant, cozy, and completely relaxing. The tea was unbelievably good. The staff were warm and approachable. This is one of those rare places that never disappoints — you simply have to experience it.','r1-name':'Salma A.','r1-av':'S',
+    'r2-text':'From the ambiance to the design, every detail was considered. The staff welcomed us the moment we stepped in, and the tea? The absolute best in Jeddah. A must-visit for any tea lover.','r2-name':'Nour H.','r2-av':'N',
+    'r3-text':'I have tried many cafés in the city, but Natay stands apart. Their Mauritanian Atay is prepared exactly the original way — the southern Moroccan tradition. If you appreciate authentic tea, this is your place.','r3-name':'Khalid M.','r3-av':'K',
+    'r4-text':'A quiet, calming escape right in the middle of Al Hamra. Good tea, fair prices, and a genuinely peaceful environment. It is my go-to spot when I need to unwind.','r4-name':'Fatima R.','r4-av':'F',
+    'r5-text':'The décor is beautiful and the prices are genuinely reasonable. I came once and immediately brought my whole family back the following weekend. One of the best in Jeddah.','r5-name':'Omar T.','r5-av':'O',
+    'r6-text':'Nice atmosphere, outstanding tea, and a genuine sense of warmth you rarely find. Natay delivers an experience that stays with you — simple as that.','r6-name':'Layla Z.','r6-av':'L',
+    'gal-label':'Inside Natay','gal-title':'A Space You\'ll<br>Want to Return To',
+    'g1':'Freshly Poured<br>Atay Glass','g2':'Interior<br>Ambiance','g3':'Evening<br>Atmosphere<br>& Décor','g4':'Cozy Seating<br>& Social Corners','g5':'The Brew<br>Process',
+    'loc-label':'Find Us','loc-title':'Come As You Are.','loc-title-em':'Tea Is Ready.',
+    'loc-desc':'Nestled in the vibrant Al Hamra district of Jeddah, Natay Tea is easy to find and even easier to fall in love with. We\'re open late every night — because great tea has no curfew.',
+    'ci1-label':'Location','ci1-val':'Al Hamra District<br>Jeddah, Saudi Arabia',
+    'ci2-label':'Phone','ci3-label':'Hours','ci3-val':'Daily · Late-Night Service Available',
+    'ci4-label':'Services','ci4-val':'Dine-In · Takeout · Late Night',
+    'loc-cta1':'Call to Reserve','loc-cta2':'Open in Google Maps',
+    'map-label':'Natay Tea','map-sub':'Al Hamra · Jeddah','map-link':'Get Directions →',
+    'h1-time':'Open · Late Night','h1-day':'Today (Tue)',
+    'h2-time':'Daily · Late Hours','h2-day':'All Week',
+    'h3-time':'✓ Available','h3-day':'Dine-In',
+    'h4-time':'✓ Available','h4-day':'Takeout',
+    'footer-logo':'Natay Tea','footer-tag':'Every sip tells a story.','footer-copy':'© 2025 Natay Tea · Al Hamra, Jeddah'
+  },
+
+  fr: {
+    dir: 'ltr', lang: 'fr',
+    seoTitle: 'Natay Tea – La Maison de Thé de Jeddah | Al Hamra',
+    seoDesc:  'Découvrez l\'Atay mauritanien authentique et des thés artisanaux chez Natay Tea, la maison de thé incontournable d\'Al Hamra, Jeddah. Ambiance chaleureuse, service nocturne, saveurs inoubliables.',
+    'nav-logo':    'Natay <span style="color:var(--gold)">Tea</span>',
+    'nav-story':   'Histoire','nav-exp':'Expérience','nav-rev':'Avis','nav-visit':'Nous Trouver',
+    'nav-cta':     'Appeler',
+    'hero-eyebrow':'Al Hamra · Jeddah · L\'Atay Brassé avec Âme',
+    'hero-headline':'Là Où Chaque Gorgée<br>Raconte une <em>Histoire.</em>',
+    'hero-sub':    'Des rituels ancestraux de l\'Atay mauritanien aux mélanges soigneusement sélectionnés — Natay Tea est le sanctuaire de Jeddah pour ceux qui croient que le bon thé est une expérience, pas juste une boisson.',
+    'hero-cta1':   'Nous Trouver à Al Hamra',
+    'hero-scroll': 'Découvrir',
+    'stat1':'Note Google','stat2':'Clients Heureux','stat3':'Saveurs à Explorer',
+    'stat4-num':'Tard','stat4':'Service en Soirée',
+    'about-label':'Notre Histoire',
+    'about-title':'Né d\'un Amour<br><span style="color:var(--rust)">Authentique du Thé.</span>',
+    'about-p1':'Natay Tea repose sur une conviction simple : la tasse de thé parfaite peut transformer une soirée ordinaire en quelque chose d\'extraordinaire. Au cœur du quartier d\'<strong>Al Hamra, Jeddah</strong>, nous avons ouvert nos portes comme un refuge — où l\'art ancestral du thé rencontre une atmosphère chaleureuse et moderne.',
+    'about-p2':'Notre signature, c\'est l\'<strong>Atay mauritanien</strong> — le thé cérémoniel préparé selon la tradition authentique du sud marocain, riche en rituel et aux saveurs complexes. À ses côtés, notre carte soigneusement sélectionnée va des classiques aux mélanges créatifs.',
+    'about-p3':'L\'espace lui-même est aussi intentionnel que le thé : vivant mais paisible, intime mais raffiné. Notre équipe ne sont pas de simples serveurs — ce sont des passionnés de thé fiers de rendre chaque visite unique.',
+    'about-watermark':'Atay',
+    'about-badge':'#1 Salon de Thé<br>à Jeddah',
+    'why-label':'La Différence Natay',
+    'why-title':'Six Raisons de<br>Revenir Encore et Encore',
+    'why-sub':'Chaque détail — de la première infusion à la dernière gorgée — est conçu pour vous offrir une expérience qui reste gravée longtemps après votre départ.',
+    'p1-title':'Héritage Atay Authentique','p1-desc':'Notre Atay mauritanien est préparé à l\'ancienne — la méthode authentique du sud marocain. Un rituel vivant qui vous connecte à des siècles de culture du thé, servi frais dans chaque verre.',
+    'p2-title':'Une Atmosphère Enveloppante','p2-desc':'Vibrant, chaleureux et soigneusement conçu — Natay trouve l\'équilibre rare entre énergie vivante et calme apaisant. Le genre d\'endroit où l\'on revient non seulement pour le thé, mais pour le sentiment.',
+    'p3-title':'Qualité Premium, Prix Justes','p3-desc':'Un excellent thé ne devrait pas coûter une fortune. Notre carte est pensée pour accueillir tous les budgets — du habitué du quartier au visiteur de première fois.',
+    'p4-title':'Ouvert Tard, Toujours','p4-desc':'Les meilleures conversations se déroulent après minuit. Natay reste ouvert tard car nous connaissons le rythme de la ville — et nous serons là avec une tasse fraîche quand vous en aurez besoin.',
+    'p5-title':'Une Équipe Sincèrement Attentionnée','p5-desc':'Amicale, compétente et toujours accessible — notre équipe est l\'âme de Natay. Ils sont là non seulement pour servir, mais pour s\'assurer que votre moment avec nous soit vraiment agréable.',
+    'p6-title':'Sur Place ou à Emporter','p6-desc':'Restez et profitez de l\'ambiance, ou prenez votre thé avec vous. Natay s\'adapte à votre vie — confort en salle ou emporter rapide et de qualité.',
+    'sig-label':'La Vedette de Notre Menu',
+    'sig-title':'L\'Atay Original.<br><em>Inimitablement Natay.</em>',
+    'sig-desc':'Versé trois fois jusqu\'à la perfection. Sucré comme il se doit. L\'Atay mauritanien chez Natay n\'est pas simplement une boisson — c\'est une cérémonie. Une gorgée et vous comprendrez pourquoi les clients traversent Jeddah jusqu\'à Al Hamra pour ce seul verre.',
+    'sig-cta':'Réserver Votre Table',
+    'test-label':'Voix de Nos Visiteurs','test-title':'Ce Que Jeddah Dit de Nous',
+    'r1-text':'L\'atmosphère était vibrante, chaleureuse et totalement relaxante. Le thé était incroyablement bon. Le personnel était chaleureux et accessible. C\'est un de ces rares endroits qui ne déçoit jamais — vous devez l\'expérimenter vous-même.','r1-name':'Salma A.','r1-av':'S',
+    'r2-text':'De l\'ambiance au design, chaque détail était pensé. Le personnel nous a accueillis dès l\'entrée, et le thé ? Le meilleur à Jeddah, sans hésitation. Une visite obligatoire pour tout amateur de thé.','r2-name':'Nour H.','r2-av':'N',
+    'r3-text':'J\'ai essayé de nombreux cafés dans la ville, mais Natay se démarque. Leur Atay mauritanien est préparé exactement selon la tradition du sud marocain. Si vous appréciez le thé authentique, c\'est votre endroit.','r3-name':'Khalid M.','r3-av':'K',
+    'r4-text':'Une escapade calme et apaisante au cœur d\'Al Hamra. Bon thé, prix raisonnables, environnement vraiment paisible. C\'est mon endroit favori quand j\'ai besoin de me détendre.','r4-name':'Fatima R.','r4-av':'F',
+    'r5-text':'Le décor est magnifique et les prix vraiment raisonnables. Je suis venu une fois et j\'ai immédiatement ramené toute ma famille le week-end suivant. L\'un des meilleurs à Jeddah, sans conteste.','r5-name':'Omar T.','r5-av':'O',
+    'r6-text':'Belle atmosphère, thé exceptionnel, et une vraie chaleur humaine qu\'on trouve rarement. Natay offre une expérience qui reste avec vous — tout simplement.','r6-name':'Layla Z.','r6-av':'L',
+    'gal-label':'À l\'Intérieur de Natay','gal-title':'Un Espace Où Vous<br>Aurez Envie de Revenir',
+    'g1':'Verre d\'Atay<br>Fraîchement Versé','g2':'Ambiance<br>Intérieure','g3':'Magie du<br>Soir &<br>Décoration','g4':'Sièges Confortables<br>& Coins Sociaux','g5':'Le Processus<br>de Préparation',
+    'loc-label':'Nous Trouver','loc-title':'Venez Comme Vous Êtes.','loc-title-em':'Le Thé Est Prêt.',
+    'loc-desc':'Niché dans le vibrant quartier Al Hamra de Jeddah, Natay Tea est facile à trouver et encore plus facile à adorer. Nous sommes ouverts tard chaque soir — parce que le bon thé n\'a pas de couvre-feu.',
+    'ci1-label':'Adresse','ci1-val':'Quartier Al Hamra<br>Jeddah, Arabie Saoudite',
+    'ci2-label':'Téléphone','ci3-label':'Horaires','ci3-val':'Tous les jours · Service en soirée disponible',
+    'ci4-label':'Services','ci4-val':'Sur Place · À Emporter · Service Nocturne',
+    'loc-cta1':'Appeler pour Réserver','loc-cta2':'Ouvrir dans Google Maps',
+    'map-label':'Natay Tea','map-sub':'Al Hamra · Jeddah','map-link':'Obtenir l\'itinéraire →',
+    'h1-time':'Ouvert · Jusqu\'à Tard','h1-day':'Aujourd\'hui (Mar)',
+    'h2-time':'Quotidien · Heures Tardives','h2-day':'Toute la Semaine',
+    'h3-time':'✓ Disponible','h3-day':'Sur Place',
+    'h4-time':'✓ Disponible','h4-day':'À Emporter',
+    'footer-logo':'Natay Tea','footer-tag':'Chaque gorgée raconte une histoire.','footer-copy':'© 2025 Natay Tea · Al Hamra, Jeddah'
+  }
+};
+
+// ── APPLY LANGUAGE ──────────────────────────────
+function setLang(code) {
+  const t   = translations[code];
+  const doc = document.documentElement;
+  const body = document.body;
+
+  // Direction + lang attr
+  doc.setAttribute('lang', t.lang);
+  doc.setAttribute('dir',  t.dir);
+  body.setAttribute('dir', t.dir);
+
+  // SEO meta
+  document.title = t.seoTitle;
+  document.querySelector('meta[name="description"]').content = t.seoDesc;
+
+  // Translate all [data-key] elements
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Active button styling
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + code).classList.add('active');
+
+  // Fix nav-links order for RTL
+  const navLinks = document.querySelector('.nav-links');
+  navLinks.style.flexDirection = t.dir === 'rtl' ? 'row-reverse' : 'row';
+
+  // Swap font vars
+  const fontSerif = t.dir === 'rtl' ? "'Noto Naskh Arabic', serif" : (code === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Cormorant Garamond', Georgia, serif");
+  const fontSans  = t.dir === 'rtl' ? "'Tajawal', sans-serif"       : "'DM Sans', sans-serif";
+  document.documentElement.style.setProperty('--serif', fontSerif);
+  document.documentElement.style.setProperty('--sans',  fontSans);
+
+  // Store preference
+  localStorage.setItem('natay-lang', code);
+}
+
+// ── SCROLL REVEAL ───────────────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// ── NAV SHRINK ──────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  nav.style.padding = window.scrollY > 60 ? '.8rem 4rem' : '1.1rem 4rem';
+});
+
+// ── INIT: load saved lang or default ─────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('natay-lang') || 'ar';
+  setLang(saved);
+});
+</script>
+</body>
+</html>
